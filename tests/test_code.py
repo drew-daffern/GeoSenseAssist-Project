@@ -64,6 +64,8 @@ def test_invalid_upload_error():
 # Run test
 try:
     test_api_status()
+    test_shape_detection_success()
+    test_invalid_upload_error()
 finally:
     # Stop the server
     flask_process.terminate()
