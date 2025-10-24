@@ -64,18 +64,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
       # Wait for MySQL to be ready
-      - name: Wait for MySQL to be ready
-        run: |
-          echo "Waiting for MySQL to be ready..."
-          for i in {30..0}; do
-            if mysql -h ${{ secrets.MYSQLHOST }} -P ${{ secrets.MYSQLPORT }} -u ${{ secrets.MYSQLUSER }} --password=${{ secrets.MYSQLPASSWORD }} -e 'SELECT 1' ${{ secrets.MYSQL_DATABASE }}; then
-              exit 0
-            fi
-            echo "Waiting..."
-            sleep 15
-          done
-          echo "MySQL failed to start!"
-          exit 1
+      
 
       # Start Flask app
       - name: Start Flask app
